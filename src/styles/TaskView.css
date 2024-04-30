@@ -1,0 +1,47 @@
+.checkbox {
+  width: 10vh;
+}
+
+.strike-text {
+  text-decoration: line-through;
+}
+
+.strike-text:before,
+.strike-text:after {
+  content: "\00a0\00a0";
+}
+
+.taskList {
+  box-shadow: 2px 2px 5px 1px;
+  width: 75%;
+  margin: auto;
+  padding: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.taskList > div {
+  width: 80%;
+}
+
+.taskContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task {
+  width: 100%;
+  text-align: center;
+}
+
+.task:hover{
+    cursor: pointer;
+}
+.task:active{ 
+    box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24); 
+    transform: translateY(4px); 
+} 
+.delete:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
