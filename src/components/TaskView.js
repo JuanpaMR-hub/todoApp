@@ -13,6 +13,7 @@ import { useState } from "react";
 const TaskView = () => {
 
     const[modalActive, setModalActive] = useState(false);
+    const[selectedId, setSelectedId] = useState(0)
 
 
     //Get a view of all tasks in the DB
@@ -36,8 +37,16 @@ const TaskView = () => {
                     <div>
                         <div className="block taskContainer">
                             <input type="checkbox" checked={item.completed} className="checkbox" onChange={(event) => toggleStatus(item.id, event)}></input>
-                            <span className={`task ${item.completed && 'strike-text'}`} onClick={()=>setModalActive(!modalActive)} data-target="modal-example">{item.task}</span>
-                            <span className="edit"> <MdModeEditOutline /></span>
+                            <span 
+                                className={`task ${item.completed && 'strike-text'}`} 
+                                onClick={()=>{
+                                    setModalActive(!modalActive);
+                                    setSelectedId(item.id);
+                                    
+                                }} 
+                                data-target="modal-example"
+                                >{item.task}</span>
+                            {/* <span className="edit"> <MdModeEditOutline /></span> */}
                             <span className="delete" onClick={() => deleteTask(item.id)}><FaRegTrashAlt /></span>
 
                         </div>
@@ -49,7 +58,7 @@ const TaskView = () => {
 
             </div>
             {modalActive && (
-                <Modal setModalActive={setModalActive} modalActive={modalActive}/>
+                <Modal setModalActive={setModalActive} modalActive={modalActive} selectedId={selectedId}/>
             )}
         </div>
 
